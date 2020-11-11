@@ -1,0 +1,24 @@
+{
+  "tests": [
+    {
+      "name": "Animals",
+      "setup": "",
+      "run": "ruby 20animals/animals_test.rb",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Warriors",
+      "setup": "",
+      "run": "ruby 20warriors/warriors_test.rb",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    }
+  ]
+}
