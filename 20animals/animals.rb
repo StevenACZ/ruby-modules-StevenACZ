@@ -1,12 +1,13 @@
 module Runner
   attr_writer :specie
-  VELOCITIES = { "caballus" => 40, "tigris" => 35 }
+
+  VELOCITIES = { "caballus" => 40, "tigris" => 35 }.freeze
 
   def run(time)
     time = case specie
-    when "caballus" then time * VELOCITIES["caballus"]
-    when "tigris" then time * VELOCITIES["tigris"]
-    end
+           when "caballus" then time * VELOCITIES["caballus"]
+           when "tigris" then time * VELOCITIES["tigris"]
+           end
     puts "I have run #{time} kilometers"
   end
 end
@@ -24,7 +25,7 @@ class Animal
   end
 end
 
-class Horse < Animal
+class Horse
   include Runner
 
   def initialize(name = "Unknown")
@@ -33,11 +34,20 @@ class Horse < Animal
   end
 end
 
-class Tiger < Animal
+class Tiger
   include Runner
 
   def initialize(name = "Unknown")
     @specie = "tigris"
     @name = name
   end
+
+  def to_s
+    "My name is #{@name} and I'm a #{@specie}"
+  end
 end
+
+horse = Horse.new("sadasd")
+puts horse
+puts horse.specie
+puts horse.name
