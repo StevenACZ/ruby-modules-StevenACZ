@@ -25,29 +25,18 @@ class Animal
   end
 end
 
-class Horse
+class Horse < Animal
   include Runner
 
   def initialize(name = "Unknown")
-    @specie = "caballus"
-    @name = name
+    super({ name: name, specie: "caballus" })
   end
 end
 
-class Tiger
+class Tiger < Animal
   include Runner
 
   def initialize(name = "Unknown")
-    @specie = "tigris"
-    @name = name
-  end
-
-  def to_s
-    "My name is #{@name} and I'm a #{@specie}"
+    super({ name: name, specie: "tigris" })
   end
 end
-
-horse = Horse.new("sadasd")
-puts horse
-puts horse.specie
-puts horse.name
