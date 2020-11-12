@@ -9,8 +9,8 @@ module BattleMoves
 
   def heal
     case weapon[:name]
-    when "sword" then self::receive_healing(15)
-    when "staff" then self::receive_healing(30)
+    when "sword" then receive_healing(15)
+    when "staff" then receive_healing(30)
     end
     puts "#{name} heals himself, now has #{life} of life"
   end
@@ -47,17 +47,23 @@ class Warrior
 end
 
 module Armory
-  WEAPONS = { 
-              "sword" => {
+  WEAPONS = { "sword" =>
+              {
                 name: "sword",
                 power: 25
               },
-              "staff" => {
+              "staff" =>
+              {
                 name: "staff",
                 power: 20
-              }
-            }.freeze
+              } }.freeze
 end
+
+# ,
+#               "staff" => {
+#                           name: "staff",
+#                           power: 20
+#               }
 
 class Battle
   include Armory
