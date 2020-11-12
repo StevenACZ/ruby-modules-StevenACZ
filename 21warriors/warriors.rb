@@ -1,13 +1,62 @@
 module BattleMoves
-  # Your code here
+  attr_writer :name, :life, :weapon
+
+  def attack(target)
+    puts "#{name} attack #{target.name}!"
+    target.receive_damage(weapon[:power])
+    puts "#{name} inflected #{weapon[:power]} damage to #{target.name}. Now they have #{target.life} of life"
+  end
+
+  def heal
+    case weapon[:name]
+    when "sword" then self::receive_healing(15)
+    when "staff" then self::receive_healing(30)
+    end
+    puts "#{name} heals himself, now has #{life} of life"
+  end
 end
 
 class Warrior
-  # Your code here
+  include BattleMoves
+  attr_reader :name, :life, :weapon
+
+  def initialize(name)
+    @name = name
+    @life = 100
+    @weapon = {}
+  end
+
+  def receive_weapon(weapon)
+    @weapon = weapon
+    puts "Now I have a #{weapon[:name]}"
+  end
+
+  def receive_damage(damage)
+    @life.positive? && @life -= damage
+    @life.negative? && @life = 0
+  end
+
+  def receive_healing(heal)
+    @life <= 100 && @life += heal
+    @life > 100 && @life = 100
+  end
+
+  def alife?
+    @life.positive? ? true : false
+  end
 end
 
 module Armory
-  # Your code here
+  WEAPONS = { 
+              "sword" => {
+                name: "sword",
+                power: 25
+              },
+              "staff" => {
+                name: "staff",
+                power: 20
+              }
+            }.freeze
 end
 
 class Battle
