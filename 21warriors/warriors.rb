@@ -59,12 +59,6 @@ module Armory
               } }.freeze
 end
 
-# ,
-#               "staff" => {
-#                           name: "staff",
-#                           power: 20
-#               }
-
 class Battle
   include Armory
 
